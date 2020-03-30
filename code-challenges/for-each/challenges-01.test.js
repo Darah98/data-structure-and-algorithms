@@ -54,12 +54,17 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const removeOne = (num, arr) => {
-  // Solution code here...
+  if (num%3===2){
+    arr.pop();
+  };
 };
 
 const removeElements = (arr, callback) => {
-  // Solution code here...
-};
+  for (let i=0; i<arr.length;i++){
+    removeOne(arr[i],arr);
+      };
+      return arr;
+  };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -68,7 +73,10 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  // Solution code here...
+arr.forEach(function(value){
+  callback(value,arr);
+});
+return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,9 +90,13 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  // Solution code here...
+  arr.forEach(function(value,idx,arr){
+    if (value%3===2){
+      arr.pop();
+    };
+  });
+  return arr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -103,7 +115,13 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  const newArr=[];
+  availableItems.forEach(function(value){
+if (value.available){
+  newArr.push(value.name);
+};
+});
+return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -121,7 +139,19 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  const outputArr=[];
+arr.forEach(function(value){
+if(value%3===0 && value%5===0){
+  outputArr.push('Fizz Buzz');
+} else if (value%3===0){
+  outputArr.push('Fizz');
+} else if (value%5===0){
+  outputArr.push('Buzz');
+} else {
+  outputArr.push(value);
+};
+});
+return outputArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
