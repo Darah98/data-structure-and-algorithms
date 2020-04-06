@@ -11,7 +11,11 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-  // Solution code here...
+  let newArr =[];
+   for (let i in arr){
+    newArr.push(2**arr[i]);
+  }
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,7 +25,9 @@ Write a function named forEachTwoToThe that produces the same output as your for
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-  // Solution code here...
+    let newArr =[];
+    arr.forEach(val=>{ newArr.push(Math.pow(2, val))})
+    return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -31,7 +37,10 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-  // Solution code here...
+    let newArr = arr.map(power=>{
+        return Math.pow(2, power);
+    })
+    return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,7 +54,10 @@ For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
 const charCode = (arr) => {
-  // Solution code here...
+  let letterCodeArr= arr.map((val)=>{
+      return val.charCodeAt();
+  })
+  return letterCodeArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,7 +71,16 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOdd = (arr) => {
-  // Solution code here...
+  let newArr = arr.map(val=>{
+      if(isNaN(val)){
+          return 'N/A';
+      } else if (val%2 === 0){
+          return 'even';
+      } else if (val%2 === 1){
+          return 'odd';
+      }
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -105,7 +126,10 @@ const snorlaxAbilities = {
 };
 
 const extractAbilities = (arr) => {
-  // Solution code here...
+  let abilityArr= arr.map(val=> {
+      return Object.values(val.ability.name).toString();
+  })
+  return abilityArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
