@@ -9,7 +9,11 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  let numEls= arr.reduce((acc, val, idx)=>{
+    if(val){acc++}
+    return acc;
+  }, 0);
+  return numEls;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,7 +73,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let nameArr= arr.reduce((name, info, idx)=>{
+    name= info.name;
+    return name;
+  }, []);
+  return nameArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
