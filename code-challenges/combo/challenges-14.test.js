@@ -9,7 +9,10 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  let newArr= arr.map(val=>{
+    return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +87,13 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let lukeMass= parseInt(arr[0].mass);
+  let newArr= arr.filter(val=>{
+    if(parseInt(val.mass) > lukeMass){
+      return val.name;
+    }
+  })
+  return newArr.join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
