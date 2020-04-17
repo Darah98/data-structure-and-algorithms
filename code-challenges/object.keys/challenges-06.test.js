@@ -7,13 +7,22 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
-  topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
-  finalExam: true
+const courseInfo = {
+  name: 'Code 301',
+  duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
+  topics: [
+    'SMACSS',
+    'APIs',
+    'NodeJS',
+    'SQL',
+    'jQuery',
+    'functional programming',
+  ],
+  finalExam: true,
 };
 
 const getCourseKeys = (obj) => {
-    return Object.keys(obj);
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,51 +37,51 @@ let characters = [
     name: 'Eddard',
     spouse: 'Catelyn',
     children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
-    house: 'Stark'
+    house: 'Stark',
   },
   {
     name: 'Jon A.',
     spouse: 'Lysa',
     children: ['Robin'],
-    house: 'Arryn'
+    house: 'Arryn',
   },
   {
     name: 'Cersei',
     spouse: 'Robert',
     children: ['Joffrey', 'Myrcella', 'Tommen'],
-    house: 'Lannister'
+    house: 'Lannister',
   },
   {
     name: 'Daenarys',
     spouse: 'Khal Drogo',
     children: ['Drogon', 'Rhaegal', 'Viserion'],
-    house: 'Targaryen'
+    house: 'Targaryen',
   },
   {
     name: 'Mace',
     spouse: 'Alerie',
     children: ['Margaery', 'Loras'],
-    house: 'Tyrell'
+    house: 'Tyrell',
   },
   {
     name: 'Euron',
     spouse: null,
     children: [],
-    house: 'Greyjoy'
+    house: 'Greyjoy',
   },
   {
     name: 'Jon S.',
     spouse: null,
     children: [],
-    house: 'Snow'
-  }
+    house: 'Snow',
+  },
 ];
 
 const getHouses = (arr) => {
   let houses = [];
-  arr.forEach(val=>{
-   houses.push(val.house);
-  })
+  arr.forEach((obj) => {
+    houses.push(obj.house);
+  });
   return houses;
 };
 
@@ -89,14 +98,13 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-    arr.forEach(val=>{
-        let objValues = Object.values(val);
-        if (val.children === []){
-            return false;
-        } else {
-            return true;
-        }
-    })
+  let boolAnswer = false;
+  arr.forEach((obj) => {
+    Object.values(obj).forEach((val) => {
+      if (val === character) boolAnswer = true;
+    });
+  });
+  return boolAnswer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -108,7 +116,14 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let boolAnswer = false;
+  arr.forEach((obj) => {
+    Object.entries(obj).forEach((entry) => {
+      if (entry[1] === character && obj.children.length>0)
+        boolAnswer = true;
+    });
+  });
+  return boolAnswer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,7 +133,13 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  let totalChar=0;
+  arr.forEach(obj=>{
+    Object.values(obj).forEach(char=>{
+      if(char) totalChar++;
+    })
+  })
+  return totalChar;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,7 +154,14 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 
 const houseSize = (arr) => {
   const sizes = [];
-  // Solution code here...
+  arr.forEach(obj=>{
+    let totalChar=0;
+    Object.values(obj).forEach(char=>{
+      if(char) totalChar++;
+    })
+    let newObj= {house: `${obj.house}`, members: totalChar};
+    sizes.push(newObj);
+  })
   return sizes;
 };
 
@@ -174,13 +202,26 @@ Run your tests from the console: jest challenges-06.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return the keys from an object', () => {
-    expect(getCourseKeys(courseInfo)).toStrictEqual(['name', 'duration', 'topics', 'finalExam']);
+    expect(getCourseKeys(courseInfo)).toStrictEqual([
+      'name',
+      'duration',
+      'topics',
+      'finalExam',
+    ]);
   });
 });
 
 describe('Testing challenge 2', () => {
   test('It should return an array of the names of the houses', () => {
-    expect(getHouses(characters)).toStrictEqual(['Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Greyjoy', 'Snow']);
+    expect(getHouses(characters)).toStrictEqual([
+      'Stark',
+      'Arryn',
+      'Lannister',
+      'Targaryen',
+      'Tyrell',
+      'Greyjoy',
+      'Snow',
+    ]);
     expect(getHouses(characters).length).toStrictEqual(7);
   });
 });
@@ -213,13 +254,29 @@ describe('Testing challenge 5', () => {
 
 describe('Testing challenge 6', () => {
   test('It should return an object for each house containing the name and size', () => {
-    expect(houseSize(characters)).toStrictEqual([{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, { house: 'Lannister', members: 5 }, { house: 'Targaryen', members: 5 }, { house: 'Tyrell', members: 4 }, { house: 'Greyjoy', members: 1 }, { house: 'Snow', members: 1 }]);
+    expect(houseSize(characters)).toStrictEqual([
+      { house: 'Stark', members: 7 },
+      { house: 'Arryn', members: 3 },
+      { house: 'Lannister', members: 5 },
+      { house: 'Targaryen', members: 5 },
+      { house: 'Tyrell', members: 4 },
+      { house: 'Greyjoy', members: 1 },
+      { house: 'Snow', members: 1 },
+    ]);
     expect(houseSize(characters).length).toStrictEqual(7);
   });
 });
 
 describe('Testing challenge 7', () => {
   test('It should not include any deceased spouses', () => {
-    expect(houseSurvivors(characters)).toStrictEqual([{ house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, { house: 'Lannister', members: 4 }, { house: 'Targaryen', members: 4 }, { house: 'Tyrell', members: 3 }, { house: 'Greyjoy', members: 1 }, { house: 'Snow', members: 1 }]);
+    expect(houseSurvivors(characters)).toStrictEqual([
+      { house: 'Stark', members: 6 },
+      { house: 'Arryn', members: 2 },
+      { house: 'Lannister', members: 4 },
+      { house: 'Targaryen', members: 4 },
+      { house: 'Tyrell', members: 3 },
+      { house: 'Greyjoy', members: 1 },
+      { house: 'Snow', members: 1 },
+    ]);
   });
 });
