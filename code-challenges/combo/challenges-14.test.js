@@ -87,10 +87,14 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  let lukeMass= parseInt(arr[0].mass);
-  let newArr= arr.filter(val=>{
-    if(parseInt(val.mass) > lukeMass){
-      return val.name;
+  let lukeMass= 0;
+  let newArr= [];
+  arr.forEach(val=>{
+    if(val.name==='Luke Skywalker'){
+      lukeMass= val.mass;
+    }
+    if(parseInt(val.mass) > parseInt(lukeMass)){
+      newArr.push(val.name);
     }
   })
   return newArr.join(' - ');
@@ -111,7 +115,15 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a, b)=> {
+    if(a[property] > b[property]){
+      return 1;
+    } else if(a[property] === b[property]){
+      return 0;
+    }else{
+      return -1;
+  }
+})
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -127,7 +139,8 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
+  if(url.includes('https://')) return true;
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
