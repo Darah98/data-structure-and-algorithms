@@ -1,4 +1,18 @@
 'use strict';
 
-// [2,4,6,8], 5	[2,4,5,6,8]
-// [4,8,15,23,42], 16	[4,8,15,16,23,42]
+function insertShiftArray(arr, midVal) {
+  let midIdx = Math.floor(arr.length / 2);
+  let newArr= [];
+  for (let i = 0; i <= arr.length; i++) {
+    //   console.log(midIdx);
+      if(i===midIdx){
+        arr[midIdx]= midVal;
+      }else if(i>midVal){
+        newArr[i]= arr[i-1];
+      }else{
+        newArr[i]= arr[i];
+      }
+  }
+  console.log(newArr);
+}
+insertShiftArray([12, 14, 11, 10], 0);
