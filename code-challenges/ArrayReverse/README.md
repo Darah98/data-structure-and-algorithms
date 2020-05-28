@@ -11,4 +11,4 @@ This challenge requires makig a function that takes in an array and reverses its
 I approached this challenge with looping on the original array then adding each number of it to a new empty array, adding the new number to the beginning of the array.
 
 ## Solution Whiteboarding
-![whiteboarding](assets/cc01.PNG)
+![whiteboarding](./assets/cc01.PNG)
