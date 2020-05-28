@@ -8,9 +8,8 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 
 const validatePin = (pin) => {
   // Solution code here...
-  let reg= /\b\d\d\d\d\b/;
+  let reg = /\b\d\d\d\d\b/;
   return reg.test(pin);
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,9 +27,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 
 const validateEmail = (email) => {
   // Solution code here...
-  let reg=/^(\w+(\.\w+)?)@\w+((.com)|(.net)|(.org))$/; 
+  let reg = /^(\w+(\.\w+)?)@\w+((.com)|(.net)|(.org))$/;
   return reg.test(email);
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,9 +50,8 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
-  let reg= /^(([(]\d\d\d[)]\s?)|(\d\d\d\s?[-]?))\d\d\d([-]|\s)?\d\d\d\d$/;
+  let reg = /^(([(]\d\d\d[)]\s?)|(\d\d\d\s?[-]?))\d\d\d([-]|\s)?\d\d\d\d$/;
   return reg.test(phoneNumber);
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -64,14 +61,14 @@ For example, findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'
 findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>']) returns ['/h1', '/div', '/p'].
 ------------------------------------------------------------------------------------------------ */
 
-const findTagNames = elements => {
+const findTagNames = (elements) => {
   // Solution code here...
-  let reg =/<\/\w+>/g;
-   let search = elements.reduce((result, element) => {
+  let reg = /<\/\w+>/g;
+  let search = elements.reduce((result, element) => {
     let res = element.match(reg);
-    res.forEach(val => result.push(val.slice(1, val.length-1)));
+    res.forEach((val) => result.push(val.slice(1, val.length - 1)));
     return result;
-  },[]);
+  }, []);
 
   return search;
 };
@@ -106,14 +103,14 @@ describe('Testing challenge 2', () => {
   });
 
   test('It should match if the email contains other top-level domains', () => {
-    expect(validateEmail('joe@codefellows.org')).toBeTruthy();
+    expect(validateEmail('joe@codefellows.org')).toFFBeTruthy();
   });
 
   test('It should match if the email contains a period and other top-level domains', () => {
     expect(validateEmail('joe.schmoe@codefellows.net')).toBeTruthy();
   });
 
-  test ('It should fail things that aren\'t email addresses', () => {
+  test('It should fail things that aren\'t email addresses', () => {
     expect(validateEmail('justastring')).toBeFalsy();
     expect(validateEmail('missing@adomain')).toBeFalsy();
     expect(validateEmail('@noname.com')).toBeFalsy();
@@ -152,9 +149,16 @@ describe('Testing challenge 3', () => {
 
 describe('Testing challenge 4', () => {
   test('It should return the closing tags', () => {
-    expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual([ '/h1', '/p' ]);
+    expect(
+      findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])
+    ).toStrictEqual(['/h1', '/p']);
   });
   test('It should work if there are multiple closing tags in a single string', () => {
-    expect(findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])).toStrictEqual([ '/h1', '/div', '/p' ]);
+    expect(
+      findTagNames([
+        '<div><h1>Hello, world!</h1></div>',
+        '<p>Welcome to my site</p>',
+      ])
+    ).toStrictEqual(['/h1', '/div', '/p']);
   });
 });

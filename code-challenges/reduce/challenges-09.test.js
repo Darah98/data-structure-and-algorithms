@@ -9,7 +9,7 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  let numEls = arr.reduce((acc, val, idx) => {
+  let numEls = arr.reduce((acc, val) => {
     if (val) {
       acc++;
     }
@@ -78,7 +78,7 @@ let starWarsData = [
 ];
 
 const returnNames = (arr) => {
-  return arr.reduce((name, info, idx) => {
+  return arr.reduce((name, info) => {
     name.push(info.name);
     return name;
   }, []);
@@ -168,11 +168,14 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  let calc= arr.reduce((acc, val)=>{
-    acc.sum+=val;
-    return acc;
-  }, {count: 0, sum: 0});
-  return calc.sum/arr.length;
+  let calc = arr.reduce(
+    (acc, val) => {
+      acc.sum += val;
+      return acc;
+    },
+    { count: 0, sum: 0 }
+  );
+  return calc.sum / arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -193,8 +196,8 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  return arr.reduce((acc, val)=>{
-    if(isPrime(val)){
+  return arr.reduce((acc, val) => {
+    if (isPrime(val)) {
       acc++;
     }
     return acc;
@@ -241,12 +244,12 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, arr) => {
-  return arr.reduce((acc, obj)=>{
-    if(obj.stat.name===statName){
-      acc=obj;
+  return arr.reduce((acc, obj) => {
+    if (obj.stat.name === statName) {
+      acc = obj;
     }
     return acc;
-  }, {})
+  }, {});
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -259,7 +262,7 @@ Write a function named extractChildren that, given the array of characters from 
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
 
-const extractChildren = (arr) => {
+const extractChildren = () => {
   // Solution code here...
 };
 
