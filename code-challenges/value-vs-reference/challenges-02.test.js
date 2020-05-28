@@ -1,6 +1,5 @@
 'use strict';
 
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
 
@@ -9,7 +8,7 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 ------------------------------------------------------------------------------------------------ */
 
 const appendTheEnd = (str) => {
-    return `${str} The end.`;
+  return `${str} The end.`;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,8 +25,8 @@ console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 
 const appendFirstToLast = (arr) => {
-    let first = arr[0];
-    arr.push(first);
+  let first = arr[0];
+  arr.push(first);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,7 +45,7 @@ console.log(a) prints { fullName: 'Octavia Estelle Butler', yearBorn: 1947 }
 ------------------------------------------------------------------------------------------------ */
 
 const addBirthYearProperty = (obj, year) => {
-    obj.yearBorn= year;
+  obj.yearBorn = year;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -63,9 +62,9 @@ console.log(people[1].isAuthor) prints true
 ------------------------------------------------------------------------------------------------ */
 
 const setStatusAsAuthor = (people) => {
-for (let i=0; i<people.length;i++){
-    people[i].isAuthor=true;
-};
+  for (let i = 0; i < people.length; i++) {
+    people[i].isAuthor = true;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +83,7 @@ console.log(a) prints [1, 2, 3, 4]
 ------------------------------------------------------------------------------------------------ */
 
 const append = (arr1, arr2) => {
-    arr1.push(...arr2);
+  arr1.push(...arr2);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -128,7 +127,11 @@ describe('Testing challenge 3', () => {
 
 describe('Testing challenge 4', () => {
   test('It should add a property to every object in an array', () => {
-    const a = [{ fullName: 'Octavia Butler' }, { fullName: 'Ray Bradbury' }, { fullName: 'Kurt Vonnegut' }];
+    const a = [
+      { fullName: 'Octavia Butler' },
+      { fullName: 'Ray Bradbury' },
+      { fullName: 'Kurt Vonnegut' },
+    ];
     setStatusAsAuthor(a);
 
     expect(a[0].isAuthor).toStrictEqual(true);
