@@ -76,6 +76,12 @@ class LinkedList {
   //   if (currentValue.value === value) {
   //   }
   // }
+  kthFromEnd(k) {
+    const node = new Node(value);
+    let currentValue = this.head;
+    if (currentValue.value === value) {
+    }
+  }
 }
 const list = new LinkedList();
 list.insert('c');
@@ -85,4 +91,5 @@ list.insertBefore('c', 'x');
 list.insertAfter('b', 'y');
 list.includes('b');
 list.toString();
+list.kthFromEnd('2')
 console.log(list);
