@@ -1,4 +1,4 @@
-# Linked-List
+# Linked-List - CC7
 
 LinkedList is a class that consists of a few methods which insert and look for a certain value in the linked list initiated with another class called Node  
 
