@@ -70,16 +70,22 @@ class LinkedList {
     }
     return this;
   }
-  // delete(value) {
-  //   const node = new Node(value);
-  //   let currentValue = this.head;
-  //   if (currentValue.value === value) {
-  //   }
-  // }
   kthFromEnd(k) {
-    const node = new Node(value);
+    let newArr = [];
     let currentValue = this.head;
-    if (currentValue.value === value) {
+    while (currentValue) {
+      newArr.push(currentValue.value);
+      currentValue = currentValue.next;
+    }
+    newArr.reverse();
+    if (k > newArr.length || k < 0) {
+      return 'Number not in the list';
+    } else {
+      for (let i = 0; i < newArr.length; i++) {
+        if (k === i) {
+          return newArr[i];
+        }
+      }
     }
   }
 }
@@ -91,5 +97,5 @@ list.insertBefore('c', 'x');
 list.insertAfter('b', 'y');
 list.includes('b');
 list.toString();
-list.kthFromEnd('2')
+list.kthFromEnd(2);
 console.log(list);
