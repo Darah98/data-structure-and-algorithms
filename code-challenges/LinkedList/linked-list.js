@@ -15,7 +15,7 @@ class LinkedList {
       node.next = this.head;
       this.head = node;
     } catch (err) {
-      console.error(error);
+      console.error(err);
     }
   }
   includes(value) {
@@ -34,19 +34,68 @@ class LinkedList {
   toString() {
     try {
       let currentValue = this.head;
+      let strVal = '';
       while (currentValue) {
-        console.log(`{${currentValue.value}} -> `);
+        strVal = strVal + `{${currentValue.value}} -> `;
         currentValue = currentValue.next;
       }
+      console.log(strVal, currentValue);
     } catch (err) {
       console.error(err);
+    }
+  }
+  append(value) {
+    const node = new Node(value);
+    let currentValue = this.head;
+    while (currentValue.next) {
+      currentValue = currentValue.next;
+    }
+    currentValue.next = node;
+    return this;
+  }
+  insertBefore(value, newVal) {
+    const node = new Node(newVal);
+    let currentValue = this.head;
+    if (currentValue.next.value === value) {
+      node.next = currentValue;
+    }
+    return this;
+  }
+  insertAfter(value, newVal) {
+    const node = new Node(newVal);
+    let currentValue = this.head;
+    if (currentValue.value === value) {
+      node.next = currentValue.next;
+      currentValue.next = node;
+    }
+    return this;
+  }
+  kthFromEnd(k) {
+    let newArr = [];
+    let currentValue = this.head;
+    while (currentValue) {
+      newArr.push(currentValue.value);
+      currentValue = currentValue.next;
+    }
+    newArr.reverse();
+    if (k > newArr.length || k < 0) {
+      return 'Number not in the list';
+    } else {
+      for (let i = 0; i < newArr.length; i++) {
+        if (k === i) {
+          return newArr[i];
+        }
+      }
     }
   }
 }
 const list = new LinkedList();
 list.insert('c');
 list.insert('b');
-list.insert('a');
+list.append('a');
+list.insertBefore('c', 'x');
+list.insertAfter('b', 'y');
 list.includes('b');
 list.toString();
+list.kthFromEnd(2);
 console.log(list);
