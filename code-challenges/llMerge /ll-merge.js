@@ -110,18 +110,13 @@ function mergeLists(ll1, ll2) {
   while (current3.next) {
     if (ll1.includes(current3.value)) {
       resList.insertAfter(current3.value, current2.value);
-      // resList.toString();
-      // current1= current1.next;
       current2 = current2.next;
       current3 = current3.next;
     } else if (ll2.includes(current.value)) {
       resList.insertAfter(current3.value, current1.value);
-      // resList.toString();
       current1 = current1.next;
-      // current2=current2.next;
       current3 = current3.next;
     }
-    // current3=current3.next;
   }
   resList.toString();
 }
