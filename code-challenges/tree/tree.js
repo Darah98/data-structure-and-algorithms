@@ -1,6 +1,57 @@
+class Node{
+    constructor(value, left=null, right=null){
+        this.value= value;
+        this.left= left;
+        this.right= right;
+    }
+}
 class BinaryTree{
+    constructor(root){
+        this.root= root;
+    }
+    preOrder(){
+        const result= [];
+        const traverseThru= (node) =>{
+            result.push(node.value);
+            if(node.left) traverseThru(node.left);
+            if(node.right) traverseThru(node.right);
+        }
+        traverseThru(this.root);
+        return result;
+    }
+    inOrder(){
+        const result= [];
+        const traverseThru= (node)=>{
+            if(node.left) traverseThru(node.left);
+            result.push(node.value);
+            if(node.right) traverseThru(node.right);
+        }
+        traverseThru(this.root);
+        return result;
+    }
+    postOrder(){
+        const result= [];
+        const traverseThru= (node)=>{
+            if(node.left) traverseThru(node.left);
+            if(node.right) traverseThru(node.right);
+            result.push(node.value);
+        }
+        traverseThru(this.root);
+        return result;
+    }
+}
+class BinarySearchTree{
     constructor(){}
-    preOrder(){}
-    inOrder(){}
-    postOrder(){}
+    add(value){
+        const node= new Node(value, left, right);
+        const tree= new BinaryTree();
+        const result= tree.preOrder();
+        result.push(node);
+    }
+    contains(value){
+        const tree= new BinaryTree();
+        const result= tree.preOrder();
+        if(result.includes(value)) true;
+        false;
+    }
 }
