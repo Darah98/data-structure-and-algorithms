@@ -39,6 +39,9 @@ class BinaryTree {
         traverseThru(this.root);
         return result;
     }
+    breadthFirst(tree){
+        
+    }
 }
 class BinarySearchTree {
     constructor() { }
