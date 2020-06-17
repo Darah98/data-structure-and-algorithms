@@ -39,10 +39,39 @@ class BinaryTree {
     traverseThru(this.root);
     return result;
   }
-  breadthFirst(tree){
-
+  breadthFirst(tree) {
+    if (!tree.root) {
+      return [];
+    }
+    const valsList = [];
+    const queue = [];
+    queue.push(tree.root);
+    while(queue.length){
+      const line= [];
+      const breadth= queue.length;
+      for(let i=0; i<breadth; i++){
+        const node= queue.shift();
+        line.push(node.value);
+        if(node.left){
+          queue.push(node.left);
+        }
+        if(node.right){
+          queue.push(node.right);
+        }
+        valsList.push(line);
+      }
+    }
+    return valsList;
   }
-  findMaximumValue(){
+  findMaxValue(tree){
+    const valsList= tree.inOrder();
+    let max;
+    for(let i=0; i<valsList.length; i++){
+      if(valsList[i]>max){
+        max=valsList[i];
+      }
+    }
+    return max;
 
   }
 }
@@ -50,7 +79,7 @@ class BinarySearchTree {
   constructor() { }
   add(value) {
     const node = new Node(value);
-    const tree= new BinaryTree(node)
+    const tree = new BinaryTree(node)
     if (!tree.root) {
       tree.root = node;
     }
