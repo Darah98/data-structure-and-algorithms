@@ -1,11 +1,14 @@
 # Trees
+
 A type of Data Structure that is implemented in differnet possible ways and can be traversed through in 3 directions
 
 ## Challenge
-The challenge requires making 3 classes, class node, class binarytree, and class binarysearchtree. all together can take new values, traverse through the tree and add the values where they belong.
+
+The challenge requires adding a method called breadthFirst that will accept a tree as its argument and loop through it line by line taking the values of the nodes in each line and storing it the array we are returning.
 
 ## Approach & Efficiency
-I approached this challenge by creating a class BinaryTree that has the methods: preOrder, inOrder and postOrder which will help us choose the suitable direction to walk through the tree and find or add the value we want.
+
+I approached this challenge by creating a class BinaryTree then adding the method: breadthFirst which will help us walk through the tree in a line-by-line manner, and return an array of the values of each line of the tree.
 
 ## Whiteboarding
-![whiteboard](cc15wb.PNG)
+![whiteboard](cc17wb.PNG)
