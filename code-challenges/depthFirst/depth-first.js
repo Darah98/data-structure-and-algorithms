@@ -128,5 +128,6 @@ function depthFirst(list){
   }
   traversal(vertexArr[0][0]);
   console.log(resultArr);
+  return resultArr;
 }
 depthFirst(graph._adjacencyList);
